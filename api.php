@@ -1,7 +1,5 @@
 <?php
 
-require "bootstrap.php";
-
 header("Content-Type:application/json");
 
 if(!empty($_GET['name']))
