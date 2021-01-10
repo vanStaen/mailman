@@ -13,3 +13,6 @@ https://getcomposer.org/download/ - To make composer globally executable :
 ```
 sudo mv composer.phar /usr/local/bin/composer
 ```
+
+## Ressource
+https://shareurcodes.com/blog/creating%20a%20simple%20rest%20api%20in%20php

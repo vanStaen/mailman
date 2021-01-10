@@ -2,9 +2,9 @@
 
 header("Content-Type:application/json");
 
-if(!empty($_GET['name']))
+if(!empty($_GET['key']))
 {
-	$name=$_GET['name'];
+	$key=$_GET['key'];
 	$price = '';
 	
 	if(empty($price))
