@@ -1,6 +1,6 @@
 <?php
+
 require "../bootstrap.php";
-use controller\mailman;
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -12,7 +12,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
 
 // all of our endpoints start with /mailman
-// everything else results in a 404 Not Found
+/* everything else results in a 404 Not Found
 if ($uri[1] !== 'mailman') {
     header("HTTP/1.1 404 Not Found");
     exit();
@@ -22,10 +22,13 @@ if ($uri[1] !== 'mailman') {
 $accountId = null;
 if (isset($uri[2])) {
     $accountId = (int) $uri[2];
-}
+} */
 
-$requestMethod = $_SERVER["REQUEST_METHOD"];
+echo json_encode(
+    array('Result' => 'Success')
+);
 
+//$requestMethod = $_SERVER["REQUEST_METHOD"];
 // pass the request method and user ID to the PersonController and process the HTTP request:
-$controller = new MailerController($requestMethod, $userId);
-$controller->processRequest();
+//$controller = new MailerController($requestMethod, $userId);
+//$controller->processRequest();
