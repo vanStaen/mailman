@@ -3,8 +3,7 @@
 header("Content-Type:application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
-//$entityBody = file_get_contents('php://input');
-$entityBody = detectRequestBody();
+$entityBody = file_get_contents('php://input');
 
 if(!empty($_GET['key']))
 {
