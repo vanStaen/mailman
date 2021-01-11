@@ -12,7 +12,7 @@ if(!empty($_GET['key']))
 	$cleanData = str_replace("\n", "", $data);
 	$dataDecoded = json_decode($cleanData, true);
 	$response['email']=$dataDecoded['email'];
-	$response['mail']=$dataDecoded['mail'];
+	$response['body']=$dataDecoded['body'];
 
 	response(200, $key, $dataDecoded);
 	
