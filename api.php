@@ -30,7 +30,7 @@ function response($status,$status_message,$data)
 	$cleanData1 = str_replace("\n", "", $data);
 	$cleanData2 = str_replace("\\", "", $cleanData1);
 	
-	$dataDecoded = json_decode($data);
+	$dataDecoded = json_decode($cleanData2);
 
 	$response['email']=$dataDecoded['email'];
 	$response['mail']=$dataDecoded['mail'];
