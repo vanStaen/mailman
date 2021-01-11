@@ -9,8 +9,7 @@ if(!empty($_GET['key']))
 {
 	$key=$_GET['key'];
 
-	//$data = $entityBody;
-	$data = json_decode($entityBody);
+	$data = $entityBody;
 	response(200, $key, $data);
 	
 }
