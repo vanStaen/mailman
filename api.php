@@ -9,12 +9,9 @@ if(!empty($_GET['key']))
 {
 	$key=$_GET['key'];
 
+	//$data = $entityBody;
 	$data = json_decode($entityBody);
-	echo $data;
-	//$email = $data['email'];
-	//$mail = $data['mail'];
-
-	response(200, $key, $entityBody);
+	response(200, $key, $data);
 	
 }
 else
@@ -29,6 +26,9 @@ function response($status,$status_message,$data)
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 	$response['data']=$data;	
+	$response['email']=$data['email'];
+	$response['mail']=$data['mail'];
+
 	$json_response = json_encode($response);
 	echo $json_response;
 }
