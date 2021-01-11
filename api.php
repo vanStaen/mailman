@@ -8,10 +8,11 @@ $entityBody = file_get_contents('php://input');
 if(!empty($_GET['key']))
 {
 	$key=$_GET['key'];
-	
+
 	$data = json_decode($entityBody);
-	$email = $data['email'];
-	$mail = $data['mail'];
+	echo $data;
+	//$email = $data['email'];
+	//$mail = $data['mail'];
 
 	response(200, $key, $email." ".$mail);
 	
