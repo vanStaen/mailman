@@ -28,7 +28,7 @@ function response($status,$status_message,$data)
 
 	$cleanData = str_replace("\n", "", $data);
 	$response['encoded']=$cleanData;	
-	$dataDecoded = json_decode($cleanData);
+	$dataDecoded = json_decode($cleanData, true);
 	$response['decoded']=$dataDecoded;	
 
 	$response['email']=$dataDecoded['email'];
