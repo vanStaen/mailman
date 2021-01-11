@@ -26,7 +26,12 @@ function response($status,$status_message,$data)
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 	$response['data']=$data;	
-	$dataDecoded = json_decode($entityBody);
+
+	$cleanData1 = str_replace("\n", "", $data);
+	$cleanData2 = str_replace("\\", "", $cleanData1);
+	
+	$dataDecoded = json_decode($data);
+
 	$response['email']=$dataDecoded['email'];
 	$response['mail']=$dataDecoded['mail'];
 
