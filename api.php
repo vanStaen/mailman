@@ -14,7 +14,7 @@ if(!empty($_GET['key']))
 	//$email = $data['email'];
 	//$mail = $data['mail'];
 
-	response(200, $key, $email." ".$mail);
+	response(200, $key, $entityBody);
 	
 }
 else
