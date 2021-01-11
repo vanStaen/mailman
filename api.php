@@ -29,11 +29,12 @@ function response($status,$status_message,$data)
 	$cleanData1 = str_replace("\n", "", $data);
 	$cleanData2 = str_replace("\\", "", $cleanData1);
 
-	$response['encoded']=$cleanData2;
+	$response['data']=$cleanData2;
 	
 	$dataDecoded = json_decode($cleanData2);
 
-	$response['decoded']=$dataDecoded;
+	$response['email']=$dataDecoded['email'];
+	$response['mail']=$dataDecoded['mail'];
 
 	$json_response = json_encode($response);
 	echo $json_response;
