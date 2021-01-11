@@ -8,15 +8,13 @@ $entityBody = file_get_contents('php://input');
 if(!empty($_GET['key']))
 {
 	$key=$_GET['key'];
-	response(200, $key ,$entityBody);
+	response(200, $key, json_decode($entityBody));
 	
 }
 else
 {
 	response(400,"Invalid Request",NULL);
 }
-
-
 
 
 function response($status,$status_message,$data)
@@ -27,14 +25,4 @@ function response($status,$status_message,$data)
 	$response['data']=$data;	
 	$json_response = json_encode($response);
 	echo $json_response;
-}
-
-
-function detectRequestBody() {
-    $rawInput = fopen('php://input', 'r');
-    $tempStream = fopen('php://temp', 'r+');
-    stream_copy_to_stream($rawInput, $tempStream);
-    rewind($tempStream);
-
-    return $tempStream;
 }
