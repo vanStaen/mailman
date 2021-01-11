@@ -26,15 +26,13 @@ function response($status,$status_message,$data)
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 
-	$cleanData1 = str_replace("\n", "", $data);
-	$cleanData2 = str_replace("\\", "", $cleanData1);
+	$cleanData = str_replace("\n", "", $data);
+	$response['encoded']=$cleanData;	
+	$dataDecoded = json_decode($cleanData);
+	$response['decoded']=$dataDecoded;	
 
-	$response['data']=$cleanData2;
-	
-	$dataDecoded = json_decode($cleanData2);
-
-	$response['email']=$dataDecoded['email'];
-	$response['mail']=$dataDecoded['mail'];
+	//$response['email']=$dataDecoded['email'];
+	//$response['mail']=$dataDecoded['mail'];
 
 	$json_response = json_encode($response);
 	echo $json_response;
