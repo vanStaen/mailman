@@ -31,8 +31,8 @@ function response($status,$status_message,$data)
 	$dataDecoded = json_decode($cleanData);
 	$response['decoded']=$dataDecoded;	
 
-	//$response['email']=$dataDecoded['email'];
-	//$response['mail']=$dataDecoded['mail'];
+	$response['email']=$dataDecoded['email'];
+	$response['mail']=$dataDecoded['mail'];
 
 	$json_response = json_encode($response);
 	echo $json_response;
