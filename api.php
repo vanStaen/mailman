@@ -2,7 +2,8 @@
 
 header("Content-Type:application/json");
 
-$entityBody = stream_get_contents(STDIN);
+$httpMethod = $_SERVER['REQUEST_METHOD'];
+$entityBody = file_get_contents('php://input');
 
 if(!empty($_GET['key']))
 {
@@ -17,7 +18,7 @@ if(!empty($_GET['key']))
 		response(200,"Product Found",$price);
 	} */
 
-	response(200,$key,$entityBody);
+	response(200, $key + $httpMethod ,$entityBody);
 	
 }
 else
