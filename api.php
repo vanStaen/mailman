@@ -18,7 +18,7 @@ if(!empty($_GET['key']))
 		response(200,"Product Found",$price);
 	} */
 
-	response(200, $key + $httpMethod ,$entityBody);
+	response(200, $key." ".$httpMethod ,$entityBody);
 	
 }
 else
