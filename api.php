@@ -2,19 +2,22 @@
 
 header("Content-Type:application/json");
 
+$entityBody = stream_get_contents(STDIN);
+
 if(!empty($_GET['key']))
 {
 	$key=$_GET['key'];
-	$price = '';
 	
-	if(empty($price))
+	/* if(empty($price))
 	{
 		response(200,"Product Not Found",NULL);
 	}
 	else
 	{
 		response(200,"Product Found",$price);
-	}
+	} */
+
+	response(200,$key,$entityBody);
 	
 }
 else
