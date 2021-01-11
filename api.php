@@ -10,6 +10,7 @@ if(!empty($_GET['key']))
 	$key=$_GET['key'];
 
 	$data = $entityBody;
+
 	response(200, $key, $data);
 	
 }
@@ -25,8 +26,9 @@ function response($status,$status_message,$data)
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 	$response['data']=$data;	
-	$response['email']=$data['email'];
-	$response['mail']=$data['mail'];
+	$dataDecoded = json_decode($entityBody);
+	$response['email']=$dataDecoded['email'];
+	$response['mail']=$dataDecoded['mail'];
 
 	$json_response = json_encode($response);
 	echo $json_response;
