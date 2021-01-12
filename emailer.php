@@ -13,15 +13,15 @@ if(!empty($_GET['key']))
 	$dataDecoded = json_decode($cleanData, true);
 	$email=$dataDecoded['email'];
 	$body=$dataDecoded['body'];
-		
-	$url = "emailer.php/".$key;	
-	$client = curl_init($url);
-	curl_setopt($client,true,true);
-	$response = curl_exec($client);	
-	$result = json_decode($response);
-	
-	echo $result->data; 
-	response(200, $key, $result);
+
+	$msg = $body;
+	$to = $email;
+    $subject = "test email";
+	$headers = "from: admin@todogether.com";
+	$txt =  wordwrap($msg,500);
+	mail($to,$subject,$txt,$headers);
+
+	response(200, $key, $dataDecoded);
 	
 }
 else
