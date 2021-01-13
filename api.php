@@ -12,7 +12,7 @@ if(!empty($_GET['id']))
 
 	$result = call_user_func('callAPI', 'POST', $url, $data);
 	$resultDecoded = json_decode($result, true);
-	$returnData="Mail successfully sent to ".$resultDecoded['to'].".";
+	$returnData="Email sent to ".$resultDecoded['to'];
 	response(200, "OK", $returnData);
 
 }
