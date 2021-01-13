@@ -11,14 +11,12 @@ if(!empty($_GET['key']))
 
 	$cleanData = str_replace("\n", "", $data);
 	$dataDecoded = json_decode($cleanData, true);
-	$email=$dataDecoded['email'];
+	$from=$dataDecoded['from'];
+	$to=$dataDecoded['to'];
+	$subject=$dataDecoded['subject'];
 	$body=$dataDecoded['body'];
-
-	$msg = $body;
-	$to = $email;
-    $subject = "test email";
-	$headers = "from: admin@todogether.com";
-	$txt =  wordwrap($msg,500);
+	$headers = "from: ".$from;
+	$txt =  wordwrap($body,500);
 	mail($to,$subject,$txt,$headers);
 
 	response(200, $key, $dataDecoded);
