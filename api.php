@@ -23,6 +23,8 @@ if(!empty($_GET['key']))
 	echo $result->data; 
 	response(200, $key, $result); */
 
+	echo $_ENV["emailerURL"];
+
 	response(200, $key, $dataDecoded);
 	
 }
@@ -38,7 +40,6 @@ function response($status,$status_message,$data)
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 	$response['data']=$data;
-	$response['emailerURL']=$_ENV["emailerURL"];
 
 	$json_response = json_encode($response);
 	echo $json_response;
