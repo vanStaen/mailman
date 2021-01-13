@@ -20,14 +20,16 @@ $body=$dataDecoded['body'];
 	}
 	catch (Exception $e) {
 		$data = 'Message: ' .$e->getMessage();
-		response(400,"Invalid Request", $data);
+		response(400,"Invalid Request", NULL);
 	}
 
 function response($status,$status_message,$data) {
 	header("HTTP/1.1 ".$status);	
 	$response['status']=$status;
 	$response['status_message']=$status_message;
-	$response['data']=$data;
+	if(!empty($data)) {
+		$response['to']=$data['to'];;
+	}
 
 	$json_response = json_encode($response);
 	echo $json_response;
