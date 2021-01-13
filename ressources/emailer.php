@@ -28,9 +28,11 @@ function response($status,$status_message,$data) {
 	$response['status']=$status;
 	$response['status_message']=$status_message;
 	if(!empty($data)) {
-		$response['to']=$data['to'];;
+		$response['to']=$data['to'];
 	}
 
 	$json_response = json_encode($response);
 	echo $json_response;
 }
+
+?>

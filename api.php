@@ -27,8 +27,11 @@ function response($status,$status_message,$data)
 	header("HTTP/1.1 ".$status);	
 	$response['status']=$status;
 	$response['status_message']=$status_message;
-	$response['data']=$data;
 
+	if(!empty($data)) {	
+		$response['data']=$data;
+	}
+	
 	$json_response = json_encode($response);
 	echo $json_response;
 }
@@ -54,12 +57,13 @@ function callAPI($method, $url, $data = false)
                 $url = sprintf("%s?%s", $url, http_build_query($data));
     }
 
+	/*
     // Optional Authentication:
-    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     curl_setopt($curl, CURLOPT_USERPWD, "username:password");
-
     curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	*/
 
     $result = curl_exec($curl);
 
