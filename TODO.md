@@ -2,10 +2,17 @@
 
 ## To-dos:
 
-- [ ] Connect to Heroku
-- [ ] Create PHP server 
-    - [ ] https://developer.okta.com/blog/2019/03/08/simple-rest-api-php)
-- [ ] Create Email function
-- [ ] Connect Emailer to Restapi 
+- [ ] Implement validation of id:key
+- [ ] Check if email address are valid
+- [ ] redirect Api call from mirror to emailer
+- [ ] Make index.html nice for the lost souls 
+
  
 ## Completed ✓
+
+- [x] Connect to Heroku
+- [x] Create PHP rest api 
+- [x] Create Email function
+- [x] Connect Emailer to Restapi 
+- [x] Create Email function
+- [x] Connect Emailer to Restapi 
