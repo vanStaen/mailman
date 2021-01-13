@@ -5,7 +5,7 @@ header("Content-Type:application/json");
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');
 
-if(!empty($_GET['id']))
+if(!empty($_GET['id']) && $data != NULL)
 {
 	$key=$_GET['id'];
 	$url = $_ENV["emailerURL"].$id;		
