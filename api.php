@@ -8,18 +8,12 @@ $data = file_get_contents('php://input');
 if(!empty($_GET['id']))
 {
 	$key=$_GET['id'];
-	$url = $_ENV["emailerURL"].$id;	
+	$url = $_ENV["emailerURL"].$id;		
 
-	/*
-	$client = curl_init($url);
-	curl_setopt($client,CURLOPT_POST,true);
-	$response = curl_exec($client);	
-	$result = json_decode($response);
-	echo $result->data; 
-	*/
+	$result = call_user_func('callAPI', 'POST', $url, $data);
 	
 	callAPI("POST", $url, $data);
-	response(200, "OK", $data);
+	response(200, "OK", $result);
 	
 }
 else
