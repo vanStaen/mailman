@@ -11,8 +11,7 @@ if(!empty($_GET['id']))
 	$url = $_ENV["emailerURL"].$id;		
 
 	$result = call_user_func('callAPI', 'POST', $url, $data);
-	
-	callAPI("POST", $url, $data);
+	//callAPI("POST", $url, $data);
 	response(200, "OK", $result);
 	
 }
