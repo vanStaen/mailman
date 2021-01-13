@@ -14,7 +14,7 @@ if(!empty($_GET['key']))
 	$email=$dataDecoded['email'];
 	$body=$dataDecoded['body'];
 		
-	/* $url = $_ENV["emailerURL"].$key;	
+	/* $url = "emailer.php/".$key;	
 	$client = curl_init($url);
 	curl_setopt($client,true,true);
 	$response = curl_exec($client);	
@@ -22,6 +22,8 @@ if(!empty($_GET['key']))
 	
 	echo $result->data; 
 	response(200, $key, $result); */
+
+	echo $_ENV["emailerURL"];
 
 	response(200, $key, $dataDecoded);
 	
