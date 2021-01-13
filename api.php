@@ -5,25 +5,21 @@ header("Content-Type:application/json");
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');
 
-if(!empty($_GET['key']))
+if(!empty($_GET['id']))
 {
-	$key=$_GET['key'];
+	$key=$_GET['id'];
+	$url = $_ENV["emailerURL"].$id;	
 
-	$cleanData = str_replace("\n", "", $data);
-	$dataDecoded = json_decode($cleanData, true);
-	$email=$dataDecoded['email'];
-	$body=$dataDecoded['body'];
-		
-	$url = "emailer.php/".$key;	
+	/*
 	$client = curl_init($url);
-	curl_setopt($client,true,true);
+	curl_setopt($client,CURLOPT_POST,true);
 	$response = curl_exec($client);	
 	$result = json_decode($response);
-	
 	echo $result->data; 
-	response(200, $key, $result);
-
-	//$_ENV["emailerURL"];
+	*/
+	
+	callAPI("POST", $url, $data);
+	response(200, "OK", $data);
 	
 }
 else
@@ -41,4 +37,39 @@ function response($status,$status_message,$data)
 
 	$json_response = json_encode($response);
 	echo $json_response;
+}
+
+
+function callAPI($method, $url, $data = false)
+{
+    $curl = curl_init();
+
+    switch ($method)
+    {
+        case "POST":
+            curl_setopt($curl, CURLOPT_POST, 1);
+
+            if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            break;
+        case "PUT":
+            curl_setopt($curl, CURLOPT_PUT, 1);
+            break;
+        default:
+            if ($data)
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+    }
+
+    // Optional Authentication:
+    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    $result = curl_exec($curl);
+
+    curl_close($curl);
+
+    return $result;
 }
