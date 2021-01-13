@@ -14,16 +14,16 @@ All verification of the data are made on the mirror side.
 - Confirmation of the credentials (id:key)
 
 ## Deploy on Heroku
-`heroku git:remote -a mailman-cvs`: Connect heroku CLI to git branch. 
+`heroku git:remote -a mailman-cvs`: Connect heroku CLI to git branch. </br>
 `git push heroku main`: Push git master to heroku.
 
-#### show logs 
+### Show logs 
 Showing the logs: `heroku logs --tail`
 
 ## Install php libraries
 `composer install` is the equivalent of `npm install`.
 
-### install conposer
+### Install composer
 https://getcomposer.org/download/ - To make composer globally executable : 
 ```
 sudo mv composer.phar /usr/local/bin/composer
