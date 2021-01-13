@@ -9,6 +9,9 @@ As Heroku doesn't allow the mail function of PHP, the rest Api deployed act as a
 `heroku git:remote -a mailman-cvs`: Connect heroku CLI to git branch. 
 `git push heroku main`: Push git master to heroku.
 
+#### show logs 
+Showing the logs: `heroku logs --tail`
+
 ## Install php libraries
 `composer install` is the equivalent of `npm install`.
 
