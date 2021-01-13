@@ -5,31 +5,25 @@ header("Content-Type:application/json");
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');
 
-if(!empty($_GET['key']))
-{
-	$key=$_GET['key'];
+$cleanData = str_replace("\n", "", $data);
+$dataDecoded = json_decode($cleanData, true);
+$from=$dataDecoded['from'];
+$to=$dataDecoded['to'];
+$subject=$dataDecoded['subject'];
+$body=$dataDecoded['body'];
 
-	$cleanData = str_replace("\n", "", $data);
-	$dataDecoded = json_decode($cleanData, true);
-	$from=$dataDecoded['from'];
-	$to=$dataDecoded['to'];
-	$subject=$dataDecoded['subject'];
-	$body=$dataDecoded['body'];
-	$headers = "from: ".$from;
-	$txt =  wordwrap($body,500);
-	mail($to,$subject,$txt,$headers);
+	try {
+		$headers="from: ".$from;
+		$txt=wordwrap($body,500);
+		mail($to,$subject,$txt,$headers);
+		response(200, "OK", $dataDecoded);
+	}
+	catch (Exception $e) {
+		$data = 'Message: ' .$e->getMessage();
+		response(400,"Invalid Request", $data);
+	}
 
-	response(200, $key, $dataDecoded);
-	
-}
-else
-{
-	response(400,"Invalid Request",NULL);
-}
-
-
-function response($status,$status_message,$data)
-{
+function response($status,$status_message,$data) {
 	header("HTTP/1.1 ".$status);	
 	$response['status']=$status;
 	$response['status_message']=$status_message;
