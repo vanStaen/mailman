@@ -5,6 +5,7 @@
 - [ ] Implement validation of id:key
 - [ ] Check if email address are valid
 - [ ] Make index.html nice for the lost souls 
+- [ ] Send html formated texts
 
  
 ## Completed ✓

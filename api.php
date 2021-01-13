@@ -67,3 +67,5 @@ function callAPI($method, $url, $data = false)
 
     return $result;
 }
+
+?>
