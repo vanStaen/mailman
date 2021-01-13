@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "de45b49b-ff25-46c0-9123-288818d6ed6c",
+		"name": "Mailman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://mailman-cvs.herokuapp.com/api/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"clement.vanstaen@gmail.com\",\n\"body\": \"This is a test email, my dude.\"\n}"
+				},
+				"url": {
+					"raw": "https://mailman-cvs.herokuapp.com/api/123",
+					"protocol": "https",
+					"host": [
+						"mailman-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://s296516134.onlinehome.fr/emailer.php?key=123",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"from\": \"rewaer <info@rewaer.com>\",\n\"to\": \"clement.vanstaen@gmail.com\",\n\"subject\": \"test subject my dude.\",\n\"body\": \"This is a test email, my dude.\"\n}"
+				},
+				"url": {
+					"raw": "http://s296516134.onlinehome.fr/emailer.php?key=456",
+					"protocol": "http",
+					"host": [
+						"s296516134",
+						"onlinehome",
+						"fr"
+					],
+					"path": [
+						"emailer.php"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "456"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
