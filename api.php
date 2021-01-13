@@ -11,7 +11,8 @@ if(!empty($_GET['id']))
 	$url = $_ENV["emailerURL"].$id;		
 
 	$result = call_user_func('callAPI', 'POST', $url, $data);
-	//callAPI("POST", $url, $data);
+	$resultDecoded = json_decode($result, true);
+	$returnData="Mail successfully sent to ".$resultDecoded['to'].".";
 	response(200, "OK", $result);
 	
 }
