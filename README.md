@@ -2,7 +2,11 @@
 Email service in PHP
 
 ## Send eMail
-As Heroku doesn't allow the mail function of PHP, the rest Api deployed act as an mirror to the script hosted on an other server (allowing the mail functionality). The link to this service is saved under `emailerURL` in the environement variable config file. 
+As Heroku doesn't allow the mail function of PHP, the rest Api deployed act as an mirror to the script hosted on an other server (allowing the mail functionality). 
+
+### Setup
+1. Upload the file emailer.php (folder ressource) in the emailer server.
+2. Save the link to this file as `emailerURL` in the environement variable config file (on Heroku and local). 
 
 
 ## Deploy on Heroku
