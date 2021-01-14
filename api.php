@@ -8,8 +8,10 @@ $dataDecoded = json_decode($data, true);
 
 if(!empty($_GET['id']) && $data != NULL)
 {
-    // Check if id and Key are a match
     $id=$_GET['id'];
+    $url = $_ENV["emailerURL"].$id;	
+
+    // Check if id and Key are a match
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
         response(401, "Unauthorized", NULL);
@@ -17,7 +19,6 @@ if(!empty($_GET['id']) && $data != NULL)
     else 
     {
         // Call emailer script
-        $url = $_ENV["emailerURL"].$id;	
         try {
             $result = call_user_func('callAPI', 'POST', $url, $data);
             $resultDecoded = json_decode($result, true);	    
@@ -42,7 +43,7 @@ function response($status,$status_message,$data)
 	$response['status_message']=$status_message;
 
 	if(!empty($data)) {	
-		$response['data']=$data;
+		$response['sendto']=$data;
 	}
 
 	$json_response = json_encode($response);
