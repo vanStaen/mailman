@@ -13,7 +13,10 @@ $subject=$dataDecoded['subject'];
 $body=$dataDecoded['body'];
 
 	try {
-		$headers="from: ".$from;
+		$headers="from: ".$from."\r\n";
+		$headers .= "Reply-To: ".$from."\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 		$txt=wordwrap($body,500);
 		mail($to,$subject,$txt,$headers);
 		response(200, "OK", $dataDecoded);
