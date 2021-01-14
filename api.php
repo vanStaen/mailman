@@ -4,7 +4,7 @@ header("Content-Type:application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');    
-$dataDecoded = json_decode($data, true);	        
+$dataDecoded = json_decode($data, true);	
 
 if(!empty($_GET['id']) && $data != NULL)
 {
@@ -16,17 +16,27 @@ if(!empty($_GET['id']) && $data != NULL)
     } 
     else 
     {
-        // Call emailer script
-        try {
-            $url = $_ENV["emailerURL"];	
-            $result = call_user_func('callAPI', 'POST', $url, $data);
-            $resultDecoded = json_decode($result, true);	    
-            response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
+        // validate Receiver email
+        if (filter_var($dataDecoded['to'], FILTER_VALIDATE_EMAIL)) 
+        {
+            // Call emailer script
+            try {
+                $url = $_ENV["emailerURL"];	
+                $result = call_user_func('callAPI', 'POST', $url, $data);
+                $resultDecoded = json_decode($result, true);	    
+                response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
+            }
+            catch (Exception $e) {
+                $data = $e->getMessage();
+                response(400, "Invalid Request", $data);
+            }
+        } 
+        else 
+        {
+            response(400,"Invalid Receiver Email", NULL);
         }
-        catch (Exception $e) {
-            $data = $e->getMessage();
-            response(400,"Invalid Request", $data);
-        }
+
+       
     }
 }
 else
