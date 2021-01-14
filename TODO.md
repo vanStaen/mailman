@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Implement validation of id:key
 - [ ] Check if email address are valid
 - [ ] Make index.html nice for the lost souls 
 - [ ] Send html formated texts
@@ -17,3 +16,4 @@
 - [x] Create Email function
 - [x] Connect Emailer to Restapi 
 - [x] redirect Api call from mirror to emailer
+- [x] Implement validation of id:key
