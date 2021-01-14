@@ -4,14 +4,11 @@ header("Content-Type:application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');    
-$dataDecoded = json_decode($data, true);	        
+//$dataDecoded = json_decode($data, true);	        
 
 if(!empty($_GET['id']) && $data != NULL)
 {
     $id=$_GET['id'];
-    $url = $_ENV["emailerURL"].$id;	
-
-    /*
     // Check if id and Key are a match
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
@@ -21,6 +18,7 @@ if(!empty($_GET['id']) && $data != NULL)
     {
         // Call emailer script
         try {
+            $url = $_ENV["emailerURL"];	
             $result = call_user_func('callAPI', 'POST', $url, $data);
             $resultDecoded = json_decode($result, true);	    
             response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
@@ -30,14 +28,6 @@ if(!empty($_GET['id']) && $data != NULL)
             response(400,"Invalid Request", $data);
         }
     }
-    */
-
-    $result = call_user_func('callAPI', 'POST', $url, $data);
-	$resultDecoded = json_decode($result, true);
-	$returnData="Email sent to ".$resultDecoded['to'];
-	response(200, "OK", $returnData);
-
-
 }
 else
 {
