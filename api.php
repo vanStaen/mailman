@@ -20,8 +20,7 @@ if(!empty($_GET['id']) && $data != NULL)
         $url = $_ENV["emailerURL"].$id;	
         $result = call_user_func('callAPI', 'POST', $url, $data);
         $resultDecoded = json_decode($result, true);	    
-        $returnData="Email sent to ".$resultDecoded['to'];
-        response(200, "OK", $returnData);   
+        response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
     }
 }
 else
