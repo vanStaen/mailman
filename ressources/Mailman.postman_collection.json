@@ -31,7 +31,7 @@
 			"response": []
 		},
 		{
-			"name": "http://s296516134.onlinehome.fr/emailer.php",
+			"name": "http://123456789.onlinehome.fr/emailer.php",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -40,10 +40,10 @@
 					"raw": "{\n\"from\": \"rewaer <info@rewaer.com>\",\n\"to\": \"clement.vanstaen@gmail.com\",\n\"subject\": \"test subject my dude.\",\n\"body\": \"This is a <b>test email</b>, my dude.\"\n}"
 				},
 				"url": {
-					"raw": "http://s296516134.onlinehome.fr/emailer.php",
+					"raw": "http://123456789.onlinehome.fr/emailer.php",
 					"protocol": "http",
 					"host": [
-						"s296516134",
+						"123456789",
 						"onlinehome",
 						"fr"
 					],
