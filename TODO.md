@@ -2,9 +2,7 @@
 
 ## To-dos:
 
-- [ ] Make index.html nice for the lost souls 
-- [ ] Send html formated texts
-
+- [ ] Make index.html nice for the lost souls
  
 ## Completed ✓
 
@@ -15,3 +13,4 @@
 - [x] redirect Api call from mirror to emailer
 - [x] Implement validation of id:key
 - [x] Check if email address valid
+- [x] Send html formated texts
