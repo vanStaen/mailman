@@ -12,7 +12,7 @@ if(!empty($_GET['id']) && $data != NULL)
     $id=$_GET['id'];
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
-        response(401, "Unauthorized", NULL);
+        response(401,$id." | ".$_ENV[$id]." | ".$dataDecoded['key'], NULL);
     } 
     else 
     {
