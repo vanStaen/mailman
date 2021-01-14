@@ -18,9 +18,15 @@ if(!empty($_GET['id']) && $data != NULL)
     {
         // Call emailer script
         $url = $_ENV["emailerURL"].$id;	
-        $result = call_user_func('callAPI', 'POST', $url, $data);
-        $resultDecoded = json_decode($result, true);	    
-        response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
+        try {
+            $result = call_user_func('callAPI', 'POST', $url, $data);
+            $resultDecoded = json_decode($result, true);	    
+            response($resultDecoded['status'], $resultDecoded['status_message'], $resultDecoded['sentto']);   
+        }
+        catch (Exception $e) {
+            $data = $e->getMessage();
+            response(400,"Invalid Request", $data);
+        }
     }
 }
 else

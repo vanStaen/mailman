@@ -19,16 +19,18 @@ $body=$dataDecoded['body'];
 		response(200, "OK", $dataDecoded);
 	}
 	catch (Exception $e) {
-		$data = 'Message: ' .$e->getMessage();
-		response(400,"Invalid Request", NULL);
+		$data = $e->getMessage();
+		response(400,"Invalid Request", $data);
 	}
 
 function response($status,$status_message,$data) {
 	header("HTTP/1.1 ".$status);	
 	$response['status']=$status;
 	$response['status_message']=$status_message;
-	if(!empty($data)) {
+	if(isset($data['to'])) {
 		$response['sentto']="Email sent to ".$data['to'];
+	} else {
+		$response['error']=$data;
 	}
 
 	$json_response = json_encode($response);
