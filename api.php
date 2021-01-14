@@ -4,7 +4,7 @@ header("Content-Type:application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $data = file_get_contents('php://input');    
-$dataDecoded = json_decode($result, true);	        
+$dataDecoded = json_decode($data, true);	        
 
 if(!empty($_GET['id']) && $data != NULL)
 {
@@ -12,7 +12,7 @@ if(!empty($_GET['id']) && $data != NULL)
     $id=$_GET['id'];
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
-        response(401,$id." | ".$_ENV[$id]." | ".$dataDecoded['key'], NULL);
+        response(401, "Unauthorized", NULL);
     } 
     else 
     {
