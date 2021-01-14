@@ -3,22 +3,30 @@
 header("Content-Type:application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
-$data = file_get_contents('php://input');
+$data = file_get_contents('php://input');    
+$dataDecoded = json_decode($result, true);	        
 
 if(!empty($_GET['id']) && $data != NULL)
 {
-	$key=$_GET['id'];
-	$url = $_ENV["emailerURL"].$id;		
-
-	$result = call_user_func('callAPI', 'POST', $url, $data);
-	$resultDecoded = json_decode($result, true);
-	$returnData="Email sent to ".$resultDecoded['to'];
-	response(200, "OK", $returnData);
-
+    // Check if id and Key are a match
+    $id=$_GET['id'];
+    if ($_ENV[$id] != $dataDecoded['key']) 
+    {
+        response(401, "Unauthorized", NULL);
+    } 
+    else 
+    {
+        // Call emailer script
+        $url = $_ENV["emailerURL"].$id;	
+        $result = call_user_func('callAPI', 'POST', $url, $data);
+        $resultDecoded = json_decode($result, true);	    
+        $returnData="Email sent to ".$resultDecoded['to'];
+        response(200, "OK", $returnData);   
+    }
 }
 else
 {
-	response(400,"Invalid Request",NULL);
+	response(400, "Invalid Request", NULL);
 }
 
 
