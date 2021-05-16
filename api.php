@@ -9,7 +9,7 @@ $dataDecoded = json_decode($data, true);
 if(!empty($_GET['id']) && $data != NULL)
 {
     $id=$_GET['id'];
-    // Check if id and Key are a match
+    // Check if id and key are a match
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
         response(401, "Unauthorized (for account {$id} with key {$dataDecoded['key']})", NULL);
