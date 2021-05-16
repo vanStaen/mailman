@@ -12,7 +12,7 @@ if(!empty($_GET['id']) && $data != NULL)
     // Check if id and Key are a match
     if ($_ENV[$id] != $dataDecoded['key']) 
     {
-        response(401, "Unauthorized", NULL);
+        response(401, "Unauthorized (for account {$id} with key {$dataDecoded['key']})", NULL);
     } 
     else 
     {
